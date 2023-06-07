@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="System.Collections.Generic.List&lt;T&gt;">
+    <Position X="0.75" Y="2" Width="2.25" />
+    <Members>
+      <Method Name="AddRange" Hidden="true" />
+      <Method Name="AsReadOnly" Hidden="true" />
+      <Method Name="CopyTo" Hidden="true" />
+      <Method Name="FindLast" Hidden="true" />
+      <Method Name="FindLastIndex" Hidden="true" />
+      <Method Name="GetRange" Hidden="true" />
+      <Method Name="IndexOf" Hidden="true" />
+      <Method Name="InsertRange" Hidden="true" />
+      <Method Name="LastIndexOf" Hidden="true" />
+      <Method Name="List" Hidden="true" />
+      <Method Name="RemoveAt" Hidden="true" />
+      <Method Name="RemoveRange" Hidden="true" />
+      <Property Name="Item" Hidden="true" />
+      <Method Name="TrimExcess" Hidden="true" />
+      <Method Name="TrueForAll" Hidden="true" />
+    </Members>
+    <NestedTypes>
+      <Struct Name="System.Collections.Generic.List&lt;T&gt;.Enumerator" Collapsed="true">
+        <TypeIdentifier />
+        <Lollipop Position="0.2" />
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Collections.Generic.SortedList&lt;TKey, TValue&gt;">
+    <Position X="3" Y="2" Width="2" />
+    <Members>
+      <Property Name="Item" Hidden="true" />
+    </Members>
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Collections.Generic.Dictionary&lt;TKey, TValue&gt;">
+    <Position X="5" Y="2" Width="2" />
+    <NestedTypes>
+      <Struct Name="System.Collections.Generic.Dictionary&lt;TKey, TValue&gt;.Enumerator" Collapsed="true">
+        <TypeIdentifier />
+        <Lollipop Position="0.2" />
+      </Struct>
+      <Class Name="System.Collections.Generic.Dictionary&lt;TKey, TValue&gt;.KeyCollection" Collapsed="true">
+        <TypeIdentifier />
+        <Lollipop Position="0.2" />
+      </Class>
+      <Class Name="System.Collections.Generic.Dictionary&lt;TKey, TValue&gt;.ValueCollection" Collapsed="true">
+        <TypeIdentifier />
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Collections.Generic.SortedDictionary&lt;TKey, TValue&gt;">
+    <Position X="7" Y="2" Width="2.5" />
+    <NestedTypes>
+      <Struct Name="System.Collections.Generic.SortedDictionary&lt;TKey, TValue&gt;.Enumerator" Collapsed="true">
+        <TypeIdentifier />
+        <Lollipop Position="0.2" />
+      </Struct>
+      <Class Name="System.Collections.Generic.SortedDictionary&lt;TKey, TValue&gt;.KeyCollection" Collapsed="true">
+        <TypeIdentifier />
+        <Lollipop Position="0.2" />
+      </Class>
+      <Class Name="System.Collections.Generic.SortedDictionary&lt;TKey, TValue&gt;.ValueCollection" Collapsed="true">
+        <TypeIdentifier />
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Collections.Generic.LinkedList&lt;T&gt;">
+    <Position X="9.5" Y="2" Width="2" />
+    <NestedTypes>
+      <Struct Name="System.Collections.Generic.LinkedList&lt;T&gt;.Enumerator" Collapsed="true">
+        <TypeIdentifier />
+        <Lollipop Position="0.2" />
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Collections.Generic.Stack&lt;T&gt;">
+    <Position X="11.5" Y="2" Width="1.75" />
+    <NestedTypes>
+      <Struct Name="System.Collections.Generic.Stack&lt;T&gt;.Enumerator" Collapsed="true">
+        <TypeIdentifier />
+        <Lollipop Position="0.2" />
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Collections.Generic.Queue&lt;T&gt;">
+    <Position X="13.25" Y="2" Width="2" />
+    <NestedTypes>
+      <Struct Name="System.Collections.Generic.Queue&lt;T&gt;.Enumerator" Collapsed="true">
+        <TypeIdentifier />
+        <Lollipop Position="0.2" />
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

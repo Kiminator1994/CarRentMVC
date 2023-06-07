@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Covariance", "Covariance\Covariance.csproj", "{B35EF609-7B9A-4B59-918B-B967CAB95570}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contravariance", "Contravariance\Contravariance.csproj", "{C2A9E041-FD0D-4BE6-A3FB-91F047A8BFEF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B35EF609-7B9A-4B59-918B-B967CAB95570}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B35EF609-7B9A-4B59-918B-B967CAB95570}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B35EF609-7B9A-4B59-918B-B967CAB95570}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B35EF609-7B9A-4B59-918B-B967CAB95570}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2A9E041-FD0D-4BE6-A3FB-91F047A8BFEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2A9E041-FD0D-4BE6-A3FB-91F047A8BFEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2A9E041-FD0D-4BE6-A3FB-91F047A8BFEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2A9E041-FD0D-4BE6-A3FB-91F047A8BFEF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ABF76F05-D054-43E7-8156-A48E8FB166BF}
+	EndGlobalSection
+EndGlobal

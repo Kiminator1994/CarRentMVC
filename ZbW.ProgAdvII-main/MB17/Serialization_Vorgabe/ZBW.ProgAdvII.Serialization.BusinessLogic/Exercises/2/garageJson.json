@@ -1,0 +1,25 @@
+{
+  "addr": {
+    "City": "St. Gallen",
+    "PostalCode": 9000,
+    "Street": "Gaiserwaldstrasse",
+    "HouseNumber": 13
+  },
+  "Cars": [
+    {
+      "Manufacturer": "Ford",
+      "ManufacturerDate": "1967-02-22T00:00:00",
+      "MaximumSpeed": 322
+    },
+    {
+      "Manufacturer": "Toyota",
+      "ManufacturerDate": "2012-02-20T00:00:00",
+      "MaximumSpeed": 120
+    },
+    {
+      "Manufacturer": "Landrover",
+      "ManufacturerDate": "2020-12-12T00:00:00",
+      "MaximumSpeed": 200
+    }
+  ]
+}

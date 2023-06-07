@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 14.0.22310.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestUIThread", "TestUIThread\TestUIThread.csproj", "{81FCB30E-B930-46DF-95DA-3A44170389F8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AnyCPU = Debug|AnyCPU
+		Release|AnyCPU = Release|AnyCPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{81FCB30E-B930-46DF-95DA-3A44170389F8}.Debug|AnyCPU.ActiveCfg = Debug|Any CPU
+		{81FCB30E-B930-46DF-95DA-3A44170389F8}.Debug|AnyCPU.Build.0 = Debug|Any CPU
+		{81FCB30E-B930-46DF-95DA-3A44170389F8}.Release|AnyCPU.ActiveCfg = Release|x86
+		{81FCB30E-B930-46DF-95DA-3A44170389F8}.Release|AnyCPU.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

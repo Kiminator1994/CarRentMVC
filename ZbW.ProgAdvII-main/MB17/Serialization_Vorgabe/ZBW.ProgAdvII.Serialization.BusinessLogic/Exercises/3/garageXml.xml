@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-16"?>
+<TheGarage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <addr City="St. Gallen" PostalCode="9000">
+    <Street>Gaiserwaldstrasse</Street>
+    <HouseNumber>13</HouseNumber>
+  </addr>
+  <Cars>
+    <C>
+      <Manufacturer>Ford</Manufacturer>
+      <ManufacturerDate>1967-02-22T00:00:00</ManufacturerDate>
+      <MaximumSpeed>322</MaximumSpeed>
+    </C>
+    <C>
+      <Manufacturer>Toyota</Manufacturer>
+      <ManufacturerDate>2012-02-20T00:00:00</ManufacturerDate>
+      <MaximumSpeed>120</MaximumSpeed>
+    </C>
+    <T>
+      <Manufacturer>Landrover</Manufacturer>
+      <ManufacturerDate>2020-12-12T00:00:00</ManufacturerDate>
+      <MaximumSpeed>200</MaximumSpeed>
+      <LoadCapacityInKg>570.5</LoadCapacityInKg>
+    </T>
+  </Cars>
+</TheGarage>

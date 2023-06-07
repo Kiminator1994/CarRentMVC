@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderTaker", "Discovery\OrderTaker\OrderTaker.csproj", "{F4FF3F81-D8A4-4B5B-95CE-F1C9CAE645E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderTaker.SharedObjects", "Discovery\OrderTaker.SharedObjects\OrderTaker.SharedObjects.csproj", "{76FD86F5-4B02-4767-9031-C3760C01119D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessRules", "BusinessRules", "{3D743689-B58B-41D8-ABB1-4E8BA1B00F5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderRules.Interface", "Discovery\OrderRules.Interface\OrderRules.Interface.csproj", "{AE9435CA-0A2D-488D-942D-6AC389F59917}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderTaker.Data", "Discovery\OrderTaker.Data\OrderTaker.Data.csproj", "{6BA65708-12D9-47AF-BC4E-0FDA5D293844}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderRules.RuleChecker", "Discovery\OrderRules.RuleChecker\OrderRules.RuleChecker.csproj", "{242A1E21-B57B-4816-826E-44441A278817}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{02D0EFC5-88CF-46FE-9B73-1DB4029A5575}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F4FF3F81-D8A4-4B5B-95CE-F1C9CAE645E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4FF3F81-D8A4-4B5B-95CE-F1C9CAE645E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4FF3F81-D8A4-4B5B-95CE-F1C9CAE645E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4FF3F81-D8A4-4B5B-95CE-F1C9CAE645E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76FD86F5-4B02-4767-9031-C3760C01119D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76FD86F5-4B02-4767-9031-C3760C01119D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76FD86F5-4B02-4767-9031-C3760C01119D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76FD86F5-4B02-4767-9031-C3760C01119D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE9435CA-0A2D-488D-942D-6AC389F59917}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE9435CA-0A2D-488D-942D-6AC389F59917}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE9435CA-0A2D-488D-942D-6AC389F59917}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE9435CA-0A2D-488D-942D-6AC389F59917}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BA65708-12D9-47AF-BC4E-0FDA5D293844}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BA65708-12D9-47AF-BC4E-0FDA5D293844}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BA65708-12D9-47AF-BC4E-0FDA5D293844}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BA65708-12D9-47AF-BC4E-0FDA5D293844}.Release|Any CPU.Build.0 = Release|Any CPU
+		{242A1E21-B57B-4816-826E-44441A278817}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{242A1E21-B57B-4816-826E-44441A278817}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{242A1E21-B57B-4816-826E-44441A278817}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{242A1E21-B57B-4816-826E-44441A278817}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AE9435CA-0A2D-488D-942D-6AC389F59917} = {3D743689-B58B-41D8-ABB1-4E8BA1B00F5B}
+		{242A1E21-B57B-4816-826E-44441A278817} = {3D743689-B58B-41D8-ABB1-4E8BA1B00F5B}
+		{6BA65708-12D9-47AF-BC4E-0FDA5D293844} = {02D0EFC5-88CF-46FE-9B73-1DB4029A5575}
+		{76FD86F5-4B02-4767-9031-C3760C01119D} = {02D0EFC5-88CF-46FE-9B73-1DB4029A5575}
+	EndGlobalSection
+EndGlobal

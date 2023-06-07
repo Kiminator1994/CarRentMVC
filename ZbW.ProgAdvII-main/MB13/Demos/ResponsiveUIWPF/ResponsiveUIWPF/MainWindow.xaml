@@ -1,0 +1,15 @@
+﻿<Window x:Class="ResponsiveUIWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ResponsiveUIWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Button x:Name="startCalculcationButton" Content="Button" HorizontalAlignment="Left" Margin="150,132,0,0" VerticalAlignment="Top" Width="75" Click="startCalculcationButton_Click"/>
+        <Label x:Name="calculationResultLabel" Content="Label" HorizontalAlignment="Left" Margin="209,208,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="numberTextBox" HorizontalAlignment="Left" Height="23" Margin="319,141,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="120"/>
+
+    </Grid>
+</Window>
