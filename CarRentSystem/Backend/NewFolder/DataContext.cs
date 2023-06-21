@@ -10,7 +10,7 @@ using System.Configuration;
 using Backend.EntityModelConfiguration;
 using Microsoft.IdentityModel.Protocols;
 
-namespace Backend
+namespace Backend.NewFolder
 {
     public class DataContext : DbContext
     {

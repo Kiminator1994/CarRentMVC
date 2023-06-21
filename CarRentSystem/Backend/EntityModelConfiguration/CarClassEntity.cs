@@ -12,7 +12,7 @@ namespace Backend.EntityModelConfiguration
     {
         public void GetReservationEntity(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<CarClass>().Property(carclass => carclass.DailyFee).HasColumnType("decimal(18,2)");
+            modelBuilder.Entity<CarClass>().Property(carClass => carClass.DailyFee).HasColumnType("decimal(18,2)");
         }
     }
 }
