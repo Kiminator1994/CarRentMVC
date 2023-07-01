@@ -1,9 +1,15 @@
 using CarRent.Data;
+using CarRent.Data.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 //DbContextConfiguration
 builder.Services.AddDbContext<AppDbContext>();
+
+//Services configuration
+builder.Services.AddScoped<ICarsService, CarsService>();
+builder.Services.AddScoped<IReservationService, ReservationService>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

@@ -1,4 +1,5 @@
 ﻿using CarRent.Data;
+using CarRent.Data.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,16 +7,23 @@ namespace CarRent.Controllers
 {
     public class CarsController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly ICarsService _service;
 
-        public CarsController(AppDbContext context)
+        public CarsController(ICarsService service)
         {
-            _context = context;
+            _service = service;
         }
         public async Task<IActionResult> Index()
         {
-            var data = await _context.Cars.OrderBy(car => car.Brand).ToListAsync();
+            var data = await _service.GetAll();
             return View(data);
+        }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            var carDetails = _service.GetById(id);
+            if (carDetails == null) return View("empty");
+            return View(carDetails);
         }
     }
 }
