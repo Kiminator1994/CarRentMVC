@@ -21,7 +21,7 @@
                             <p class="card-text">
                                 <h5 class="card-title">
                                     @item.Brand @item.ModelType
-                                    <a class="text-white float-md-end"><i class="bg-dark bi-pencil-square"></i></a>
+                                    <a class="text-white float-md-end"></a>
                                 </h5>
                             </p>
                         </div>
@@ -52,7 +52,7 @@
 
                         @*Footer*@
                         <div class="card-footer text-end">
-                            <a class="btn btn-outline-primary"><i class="bi bi-eye-fill"></i> Show Details</a>
+                            <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye-fill"></i> Show Details</a>
                             <a class="btn btn-success text-white col-2" asp-controller="Reservations" asp-action="Create"><i class="bi-cart-plus"> Rent</i></a>
                         </div>
                     </div>

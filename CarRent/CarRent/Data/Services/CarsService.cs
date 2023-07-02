@@ -29,9 +29,10 @@ namespace CarRent.Data.Services
             return result;
         }
 
-        public Car GetById(int id)
+        public async  Task<Car> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var result = await _context.Cars.FirstOrDefaultAsync(c => c.Id == id);
+            return result;
         }
 
         public Car Update(int id, Car car)

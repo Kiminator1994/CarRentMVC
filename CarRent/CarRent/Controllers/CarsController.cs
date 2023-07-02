@@ -21,7 +21,7 @@ namespace CarRent.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            var carDetails = _service.GetById(id);
+            var carDetails = await _service.GetByIdAsync(id);
             if (carDetails == null) return View("empty");
             return View(carDetails);
         }
