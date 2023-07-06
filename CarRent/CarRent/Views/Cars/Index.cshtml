@@ -3,20 +3,23 @@
 @{
     ViewData["Title"] = "Car";
 }
+<head>
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+</head>
 
 <div class="text-center">
     <h2 class="display-4">Rent Your Dream Car</h2>
     <p>Learn about our Cars now and get a 1% discount &#64; <a href="https://boulderbugle.com/-a4x0o13j">www.YouWish.com</a></p>
 </div>
+
 <div class="row">
     @foreach(var item in Model)
     {
         <div class="col-md-4 col-xs-6 border-primary mb-3">
-            <div class="card mb-3" style="max-width: 540px">
+            <div class="card mb-3" style="max-width: 900px">
                 <div row="g-0">
                     <div class="col-md-12">
-
-                        @*Card Header*@
+                        @* Card Header *@
                         <div class="card-header text-white bg-dark">
                             <p class="card-text">
                                 <h5 class="card-title">
@@ -26,10 +29,10 @@
                             </p>
                         </div>
                     </div>
-                    <div class="col-md-6 card-img">
-                        <img src="@item.PictureUrl" width="538px" height="300px" alt="@item.ModelType image">
+                    <div class="col-md-6 card-img" style="overflow: hidden;">
+                        <img src="@item.PictureUrl" style="object-fit: cover; width: 100%; height: 100%;" alt="@item.ModelType image">
                     </div>
-                    <div class="col-md-6 card-body">                        
+                    <div class="col-md-6 card-body">
                         <div>
                             <p class="card-text">Some useful description</p>
                             <p class="card-text"><b>Car Nr.: </b>@item.Nr</p>
@@ -49,11 +52,10 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-
-                        @*Footer*@
+                        @* Footer *@
                         <div class="card-footer text-end">
                             <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye-fill"></i> Show Details</a>
-                            <a class="btn btn-success text-white col-2" asp-controller="Reservations" asp-action="Create"><i class="bi-cart-plus"> Rent</i></a>
+                            <a class="btn btn-success text-white col-2" asp-controller="Reservations" asp-action="Create" asp-route-category="@(item.Category.ToString())"><i class="bi-cart-plus"> Rent</i></a>
                         </div>
                     </div>
                 </div>

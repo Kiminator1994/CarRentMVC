@@ -5,9 +5,9 @@ namespace CarRent.Data.Services
     public interface ICustomerService
     {
         Task<IEnumerable<Customer>> GetAll();
-        Customer GetById(int id);
+        Task<Customer> GetByIdAsync(int id);
         void Add(Customer customer);
-        Customer Update(int id, Customer customer);
-        bool Delete(int id);
+        Task<Customer> UpdateAsync(int id, Customer customer);
+        void Delete(int id);
     }
 }

@@ -1,6 +1,14 @@
 ﻿@model Reservation
+@using CarRent.Data
 @{
     ViewData["Title"] = "Reservation";
+    var categoryString = Context.Request.Query["category"];
+    decimal price = 0;
+    if (!string.IsNullOrEmpty(categoryString) && Enum.TryParse<CarCategory>(categoryString, out var category))
+    {
+        price = (decimal)category;
+        ViewBag.Category = price;
+    }
 }
 
 <!DOCTYPE html>
@@ -51,6 +59,9 @@
             </div>
             <button type="submit" class="btn btn-primary" id="submit" style="margin-top:10px" disabled>Submit</button>
         </form>
+        <div class="fixed-bottom text-end" style="margin: 0px 150px 75px 0px">
+            <a class="btn btn-secondary" asp-action="Back" asp-controller="Cars">&#8592 Back</a>
+        </div>
     </div>
 
     <script>
@@ -65,7 +76,7 @@
 
                 if (startDate && endDate && startDate <= endDate) {
                     var totalDays = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1;
-                    var totalFee = totalDays * 50; // Assuming a fee of $50 per day
+                    var totalFee = totalDays * @price; 
                     totalFeeInput.value = totalFee;
                     document.getElementById('submit').disabled = false;
                 } else {

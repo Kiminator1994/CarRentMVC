@@ -17,9 +17,18 @@ namespace CarRent.Data.Services
             _context.SaveChanges();
         }
 
-        public bool Delete(int id)
+        public void Delete(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var customer = _context.Customers.Find(id);
+                _context.Customers.Remove(customer);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         public async Task<IEnumerable<Customer>> GetAll()
@@ -28,14 +37,17 @@ namespace CarRent.Data.Services
             return result;
         }
 
-        public Customer GetById(int id)
+        public async Task<Customer> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var result = await _context.Customers.FirstOrDefaultAsync(c => c.Id == id);
+            return result;
         }
 
-        public Customer Update(int id, Customer customer)
+        public async Task<Customer> UpdateAsync(int id, Customer newCustomer)
         {
-            throw new NotImplementedException();
+            _context.Update(newCustomer);
+            await _context.SaveChangesAsync();
+            return newCustomer;
         }
     }
 }

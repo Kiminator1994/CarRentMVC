@@ -8,6 +8,6 @@ namespace CarRent.Data.Services
         Task<Car> GetByIdAsync(int id);
         void Add(Car car);
         Car Update(int id, Car car);
-        bool Delete(int id);
+        void Delete(int id);
     }
 }

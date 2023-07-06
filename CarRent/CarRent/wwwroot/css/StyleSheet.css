@@ -1,0 +1,20 @@
+﻿/* For 1080p resolution */
+@media (min-width: 1920px) {
+    .card-img {
+        height: 350px;
+    }
+}
+
+/* For 1440p resolution */
+@media (min-width: 2560px) {
+    .card-img {
+        height: 470px;
+    }
+}
+
+/* For 4K (3840p) resolution */
+@media (min-width: 3840px) {
+    .card-img {
+        height: 600px;
+    }
+}

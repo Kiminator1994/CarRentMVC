@@ -1,0 +1,47 @@
+﻿@model Customer
+
+<div class="text-center">
+    <h2>Add a Customer</h2>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form asp-action="Add">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Nr" class="control-label"></label>
+                    <input asp-for="Nr" class="form-control" type="number" min="0" oninput="validity.valid||(value='');" id="nr" name="Nr" />
+                    <span asp-validation-for="Nr" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FirstName" class="control-label"></label>
+                    <input asp-for="FirstName" class="form-control" type="text" id="firstname" name="FirstName" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LastName" class="control-label"></label>
+                    <input asp-for="LastName" class="form-control" type="text" id="lastName" name="LastName" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Address" class="control-label"></label>
+                    <input asp-for="Address" class="form-control" type="text" id="address" name="Address" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="City" class="control-label"></label>
+                    <input asp-for="City" class="form-control" type="text" id="city" name="City" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+                <div class="form-group" style=" margin: 10px 0px">
+                    <input type="submit" value="Add Customer" class="btn btn-success" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="fixed-bottom text-end" style="margin: 0px 25px 75px 0px">
+        <a class="btn btn-secondary" asp-action="Back">&#8592 Back</a>
+    </div>
+</div>
+

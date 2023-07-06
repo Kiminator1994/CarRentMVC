@@ -26,9 +26,10 @@ namespace CarRent.Controllers
         {           
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StartDate,EndDate,TotalFee")] Reservation reservation, string firstName, string lastName, string address, string city)
+        public IActionResult Create([Bind("StartDate,EndDate,TotalFee")] Reservation reservation, string firstName, string lastName, string address, string city)
         {
             if (ModelState.IsValid)
             {

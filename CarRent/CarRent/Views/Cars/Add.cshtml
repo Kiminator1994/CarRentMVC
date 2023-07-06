@@ -1,0 +1,68 @@
+﻿@model Car
+
+<div class="text-center">
+    <h2>Add a Car</h2>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form asp-action="Add">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Brand" class="control-label"></label>
+                    <input asp-for="Brand" class="form-control" type="text" id="brand" name="brand" />
+                    <span asp-validation-for="Brand" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ModelType" class="control-label"></label>
+                    <input asp-for="ModelType" class="form-control" type="text" id="modelType" name="modelType" />
+                    <span asp-validation-for="ModelType" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Category" class="control-label"></label>
+                    <select asp-for="Category" class="form-select" aria-label="Category">                    
+                        <option selected value="Simple">Simple</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Luxury">Luxury</option>
+                    </select>
+                    <span asp-validation-for="Category" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Nr" class="control-label"></label>
+                    <input asp-for="Nr" class="form-control" type="number" min="0" oninput="validity.valid||(value='');" id="nr" name="nr" />
+                    <span asp-validation-for="Nr" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PictureUrl" class="control-label"></label>
+                    <input asp-for="PictureUrl" class="form-control" type="url" id="pictureUrlInput" name="pictureUrl" />
+                    <span asp-validation-for="PictureUrl" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="margin: 10px 0px">
+                    <button type="button" onclick="previewPicture()" class="btn btn-primary mr-2">Preview Picture</button>
+                    <div id="picturePreview"></div>
+                </div>
+                <div class="form-group" style=" margin: 10px 0px">
+                    <input type="submit" value="Add Car" class="btn btn-success" />
+                </div>
+            </form>            
+        </div>
+    </div>
+    <div class="fixed-bottom text-end" style="margin: 0px 25px 75px 0px">
+        <a class="btn btn-secondary" asp-action="Back">&#8592 Back</a>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function previewPicture() {
+            var pictureUrl = document.getElementById('pictureUrlInput').value;
+            if (pictureUrl) {
+                var previewDiv = document.getElementById('picturePreview');
+                previewDiv.innerHTML = '<img src="' + pictureUrl + '" alt="Car Picture" style="max-width: 300px; max-height: 300px;" />';
+            } else {
+                alert('Please enter a valid picture URL.');
+            }
+        }
+    </script>
+}

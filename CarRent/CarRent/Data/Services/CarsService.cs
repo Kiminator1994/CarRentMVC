@@ -14,13 +14,22 @@ namespace CarRent.Data.Services
         }
         public void Add(Car car)
         {
-            _context.Cars.Add(car);
-            _context.SaveChanges();
+            try
+            {
+                _context.Cars.Add(car);
+                _context.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                
+            }
+            
         }
 
-        public bool Delete(int id)
+        public void Delete(int id)
         {
-            throw new NotImplementedException();
+
+            
         }
 
         public async Task<IEnumerable<Car>> GetAll()
@@ -29,7 +38,7 @@ namespace CarRent.Data.Services
             return result;
         }
 
-        public async  Task<Car> GetByIdAsync(int id)
+        public async Task<Car> GetByIdAsync(int id)
         {
             var result = await _context.Cars.FirstOrDefaultAsync(c => c.Id == id);
             return result;

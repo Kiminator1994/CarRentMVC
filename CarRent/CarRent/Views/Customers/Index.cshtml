@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Customer>
+@{
+    ViewData["Title"] = "Customer";
+}
+<div class="col-md-8 offset-md-2 ">
+    <table class="table">
+        <thead>
+            <tr class="text-center">
+                <th>@Html.DisplayNameFor(model => model.Nr)</th>
+                <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+                <th>@Html.DisplayNameFor(model => model.LastName)</th>
+                <th>@Html.DisplayNameFor(model => model.Address)</th>              
+                <th>@Html.DisplayNameFor(model => model.City)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="text-center">
+
+                    <td class="align-middle">@Html.DisplayFor(Item => item.Nr)</td>
+                    <td class="align-middle">@Html.DisplayFor(Item => item.FirstName)</td>
+                    <td class="align-middle">@Html.DisplayFor(Item => item.LastName)</td>
+                    <td class="align-middle">@Html.DisplayFor(Item => item.Address)</td>
+                    <td class="align-middle">@Html.DisplayFor(Item => item.City)</td>
+
+                    <td class="align-middle">
+                        <a class="btn btn-outline-info text-black"><i class="bi bi-eye"></i>Details</a> |
+                        <a class="btn btn-outline-primary text-black" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i>Edit</a> |
+                        <a class="btn btn-danger" asp-action="Remove" asp-route-id="@item.Id" ><i class="bi bi-trash"></i>Remove</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="fixed-bottom text-end" style="margin: 0px 25px 75px 0px">
+        <a class="btn btn-success" asp-action="Add" >Add a Customer</a>
+    </div>
+</div>

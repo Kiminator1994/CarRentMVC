@@ -17,6 +17,7 @@ namespace CarRent.Data
                     {
                         new Car()
                         {
+                            Description = "Cool Car",
                             PictureUrl = "https://images.pexels.com/photos/3874337/pexels-photo-3874337.jpeg?auto=compress&cs=tinysrgb&w=1600",
                             Nr = 1000,
                             IsAvailable = true,
@@ -26,6 +27,7 @@ namespace CarRent.Data
                         },
                         new Car()
                         {
+                            Description = "Nice Car",
                             PictureUrl = "https://images.pexels.com/photos/16475132/pexels-photo-16475132/free-photo-of-in-this-captivating-image-a-sleek-grey-honda-civic-type-r-10th-generation-stands-boldly-in-front-of-an-abandoned-warehouse-creating-a-striking-visual-contrast-the-car-s-aggressive-styli.jpeg?auto=compress&cs=tinysrgb&w=1600",
                             Nr = 1001,
                             IsAvailable = true,
@@ -35,6 +37,7 @@ namespace CarRent.Data
                         },
                         new Car()
                         {
+                            Description = "Fancy Car",
                             PictureUrl = "https://images.pexels.com/photos/12736948/pexels-photo-12736948.jpeg?auto=compress&cs=tinysrgb&w=1600",
                             Nr = 1002,
                             IsAvailable = true,
@@ -44,6 +47,7 @@ namespace CarRent.Data
                         },
                         new Car()
                         {
+                            Description = "Hot Car",
                             PictureUrl = "https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg?auto=compress&cs=tinysrgb&w=1600",
                             Nr = 1003,
                             IsAvailable = false,
