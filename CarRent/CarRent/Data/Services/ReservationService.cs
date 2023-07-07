@@ -22,20 +22,29 @@ namespace CarRent.Data.Services
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Reservation>> GetAll()
+        public IEnumerable<Reservation> GetAll()
         {
-            var result = await _context.Reservations.ToListAsync();
-            return result;
+            return _context.Reservations.ToList();
+
+            
         }
 
-        public Reservation GetById(int id)
+
+        public async Task<Reservation> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Reservations.FirstOrDefaultAsync(r =>  r.Id == id);
         }
 
-        public Reservation Update(int id, Reservation reservation)
+        public async Task<List<Reservation>> GetByCarIdAsync(int carId)
         {
-            throw new NotImplementedException();
+             return await _context.Reservations.Where(res => res.CarId == carId).ToListAsync();
+        }
+
+        public async Task<Reservation> UpdateAsync(int id, Reservation newReservation)
+        {
+            _context.Update(newReservation);
+            await _context.SaveChangesAsync();
+            return newReservation;
         }
     }
 }

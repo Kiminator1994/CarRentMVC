@@ -1,6 +1,7 @@
 ﻿using CarRent.Data;
 using CarRent.Data.Services;
 using CarRent.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,7 +21,24 @@ namespace CarRent.Controllers
             return View(data);
         }
 
-        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> Filter(string searchString)
+        {
+            var cars = await _service.GetAll();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {               
+                var filteredResultNew =  cars.Where(c => string.Equals(c.Brand, searchString, StringComparison.CurrentCultureIgnoreCase) || 
+                                                        string.Equals(c.ModelType, searchString, StringComparison.CurrentCultureIgnoreCase) ||
+                                                        string.Equals(c.Nr.ToString(), searchString, StringComparison.CurrentCultureIgnoreCase) ||
+                                                        string.Equals(c.Category.ToString(), searchString, StringComparison.CurrentCultureIgnoreCase)).ToList();
+
+                return View("Index", filteredResultNew);
+            }
+
+            return View("Index", cars);
+        }
+        
         public async Task<IActionResult> Details(int id)
         {
             var carDetails = await _service.GetByIdAsync(id);
@@ -28,7 +46,6 @@ namespace CarRent.Controllers
             return View(carDetails);
         }
 
-        [HttpGet]
         public IActionResult Add()
         {
             return View();
@@ -36,7 +53,7 @@ namespace CarRent.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Add([Bind("Nr,PictureUrl,Category,Brand,ModelType")] Car car)
+        public IActionResult Add([Bind("Description,Nr,PictureUrl,Category,Brand,ModelType")] Car car)
         {
             if (ModelState.IsValid)
             {              

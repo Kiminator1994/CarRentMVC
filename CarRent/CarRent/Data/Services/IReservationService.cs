@@ -4,10 +4,11 @@ namespace CarRent.Data.Services
 {
     public interface IReservationService
     {
-        Task<IEnumerable<Reservation>> GetAll();
-        Reservation GetById(int id);
+        IEnumerable<Reservation> GetAll();
+        Task<Reservation> GetByIdAsync(int id);
         void Add(Reservation reservation);
-        Reservation Update(int id, Reservation reservation);
+        Task<Reservation> UpdateAsync(int id, Reservation reservation);
         bool Delete(int id);
+        Task<List<Reservation>> GetByCarIdAsync(int carId);
     }
 }

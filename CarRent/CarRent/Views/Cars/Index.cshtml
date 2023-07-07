@@ -34,28 +34,19 @@
                     </div>
                     <div class="col-md-6 card-body">
                         <div>
-                            <p class="card-text">Some useful description</p>
+                            <p class="card-text"><b>Description: </b>@item.Description</p>
                             <p class="card-text"><b>Car Nr.: </b>@item.Nr</p>
                             <p class="card-text"><b>Brand: </b>@item.Brand</p>
                             <p class="card-text"><b>Model: </b>@item.ModelType</p>
                             <p class="card-text"><b>Price: </b> @{decimal price = (decimal)item.Category;}
                                 @Html.DisplayFor(modelItem => price)</p>
-                            <p class="card-text"><b>Available: </b>@if (item.IsAvailable)
-                                {
-                                    <span>&#10004;</span>
-                                }
-                                else
-                                {
-                                    <span>&#10060;</span>
-                                }
-                            </p>
                         </div>
                     </div>
                     <div class="col-md-12">
                         @* Footer *@
                         <div class="card-footer text-end">
                             <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye-fill"></i> Show Details</a>
-                            <a class="btn btn-success text-white col-2" asp-controller="Reservations" asp-action="Create" asp-route-category="@(item.Category.ToString())"><i class="bi-cart-plus"> Rent</i></a>
+                            <a class="btn btn-success text-white col-2" asp-controller="Reservations" asp-action="Create" asp-route-carId="@item.Id" asp-route-category="@(item.Category.ToString())"><i class="bi-cart-plus"> Rent</i></a>
                         </div>
                     </div>
                 </div>
@@ -63,6 +54,7 @@
         </div>
     }
 </div>
+
 
 @*<div class="col-md-8 offset-md-2 ">
     <table class="table">

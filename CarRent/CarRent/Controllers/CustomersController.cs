@@ -1,5 +1,6 @@
 ﻿using CarRent.Data.Services;
 using CarRent.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +21,25 @@ namespace CarRent.Controllers
             return View(data);
         }
 
+        [AllowAnonymous]
+        public async Task<IActionResult> Filter(string searchString)
+        {
+            var customers = await _service.GetAll();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                var filteredResultNew = customers.Where(c => string.Equals(c.FirstName, searchString, StringComparison.CurrentCultureIgnoreCase) ||
+                                                        string.Equals(c.LastName, searchString, StringComparison.CurrentCultureIgnoreCase) ||
+                                                        string.Equals(c.City, searchString, StringComparison.CurrentCultureIgnoreCase) ||
+                                                        string.Equals(c.Nr.ToString(), searchString, StringComparison.CurrentCultureIgnoreCase) ||
+                                                        string.Equals(c.Address, searchString, StringComparison.CurrentCultureIgnoreCase)).ToList();
+
+                return View("Index", filteredResultNew);
+            }
+
+            return View("Index", customers);
+        }
+
         public IActionResult Add()
         {
             return View();
@@ -27,11 +47,11 @@ namespace CarRent.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Add([Bind("Nr,FirstName,LastName,Address,City")] Customer customer)
+        public IActionResult Add([Bind("Nr,FirstName,LastName,Address,City")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-                _service.Add(customer);
+                 _service.Add(customer);
                 return RedirectToAction("Index");
             }
             return View(customer);           
