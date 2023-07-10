@@ -7,7 +7,7 @@ namespace CarRent.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "Nr")]
+        [Display(Name = "Car Nr")]
         [Required(ErrorMessage = "Nr is required")]
         public int Nr { get; set; }
 

@@ -72,32 +72,35 @@ namespace CarRent.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StartDate,EndDate,TotalFee")] Reservation reservation, string firstName, string lastName, string address, string city, int carId)
+        public async Task<IActionResult> Create([Bind("StartDate,EndDate,TotalFee")] Reservation reservation, Customer customer, int carId)
         {
+            ModelState.Remove("Car");
+            ModelState.Remove("Customer");
             if (ModelState.IsValid)
             {
                 // Create a new customer
-                var customer = new Customer
-                {
-                    FirstName = firstName,
-                    LastName = lastName,
-                    Address = address,
-                    City = city
+                var newCustomer = new Customer
+                {                 
+                    FirstName = customer.FirstName,
+                    LastName = customer.LastName,
+                    Address = customer.Address,
+                    City = customer.City
                 };
-                var dbCustomer = _customerService.Get(customer);
+                var dbCustomer = await _customerService.Get(customer);
                 if (dbCustomer == null)
                 {
+                    customer.Nr = _customerService.MaxNr() + 1;
                     _customerService.Add(customer);
-                    dbCustomer =  _customerService.Get(customer);
-                }                                            
-                reservation.Customer = await dbCustomer;
+                    dbCustomer = await _customerService.Get(customer);
+                }                                                           
                 reservation.CarId = carId;
-                reservation.CustomerId = customer.Id;
+                reservation.CustomerId = dbCustomer.Id;
+                reservation.Nr = _service.MaxNr() + 1;
                 _service.Add(reservation);
 
                 return RedirectToAction("Index", "Cars");
             }
-            return View(reservation);
+            return View(customer);
         }
 
         public async Task<IActionResult> Edit(int id)
@@ -120,12 +123,27 @@ namespace CarRent.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit([Bind("StartDate,EndDate,TotalFee")] Reservation reservation, string firstName, string lastName, string address, string city, int carId)
         {
+            ModelState.Remove("Car");
+            ModelState.Remove("Customer");
             if (ModelState.IsValid)
             {
                 await _service.UpdateAsync(carId, reservation);
                 return RedirectToAction("Index");
             }
             return View(reservation);
+        }
+
+        public async Task<IActionResult> Remove(int id)
+        {
+            var reservation = await _service.GetByIdAsync(id);
+            return View(reservation);
+        }
+
+        [HttpPost, ActionName("Remove")]
+        public IActionResult RemoveConfirmed(int id)
+        {
+            _service.Delete(id);
+            return RedirectToAction("Index");
         }
     }
 }

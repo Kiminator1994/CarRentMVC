@@ -53,5 +53,12 @@ namespace CarRent.Data.Services
             await _context.SaveChangesAsync();
             return newCustomer;
         }
+
+        public int MaxNr()
+        {
+            var number = (from customer in _context.Customers
+                          select customer.Nr).Max();
+            return number;
+        }
     }
 }

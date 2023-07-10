@@ -3,6 +3,8 @@ using CarRent.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
+using System.Web.Razor;
 
 
 namespace CarRent.Controllers
@@ -47,12 +49,29 @@ namespace CarRent.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Add([Bind("Nr,FirstName,LastName,Address,City")] Customer customer)
+        public IActionResult Add([Bind("FirstName,LastName,Address,City")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-                 _service.Add(customer);
-                return RedirectToAction("Index");
+                // Create a new customer
+                var newCustomer = new Customer
+                {
+                    FirstName = customer.FirstName,
+                    LastName = customer.LastName,
+                    Address = customer.Address,
+                    City = customer.City
+                };
+                var dbCustomer = _service.Get(customer);
+                if (dbCustomer.Result == null)
+                {
+                    customer.Nr = _service.MaxNr() + 1;
+                    _service.Add(customer);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.Message = "Customer already exists";
+                }
             }
             return View(customer);           
         }
@@ -67,7 +86,7 @@ namespace CarRent.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nr,FirstName,LastName,Address,City")] Customer customer)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Address,City")] Customer customer)
         {
             if (ModelState.IsValid)
             {

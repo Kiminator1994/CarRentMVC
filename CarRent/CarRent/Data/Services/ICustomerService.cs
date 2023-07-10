@@ -10,5 +10,6 @@ namespace CarRent.Data.Services
         Task<Customer> Get(Customer customer);
         Task<Customer> UpdateAsync(int id, Customer customer);
         void Delete(int id);
+        int MaxNr();
     }
 }

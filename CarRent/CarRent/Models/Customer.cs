@@ -6,6 +6,7 @@ namespace CarRent.Models
     public class Customer
     {
         public int Id { get; set; }
+        [Display(Name = "Customer Nr")]
         public int Nr { get; set; }
 
         [Display(Name = "Firstname")]

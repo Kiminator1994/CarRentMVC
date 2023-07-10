@@ -8,7 +8,8 @@ namespace CarRent.Data.Services
         Task<Reservation> GetByIdAsync(int id);
         void Add(Reservation reservation);
         Task<Reservation> UpdateAsync(int id, Reservation reservation);
-        bool Delete(int id);
+        void Delete(int id);
         Task<List<Reservation>> GetByCarIdAsync(int carId);
+        int MaxNr();
     }
 }

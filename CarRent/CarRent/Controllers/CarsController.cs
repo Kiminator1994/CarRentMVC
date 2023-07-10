@@ -53,12 +53,12 @@ namespace CarRent.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Add([Bind("Description,Nr,PictureUrl,Category,Brand,ModelType")] Car car)
+        public async Task<IActionResult> Add([Bind("Description,PictureUrl,Category,Brand,ModelType")] Car car)
         {
             if (ModelState.IsValid)
-            {              
+            {
+                car.Nr = _service.MaxNr() + 1;
                 _service.Add(car);
-
                 return RedirectToAction("Index");
             }
 

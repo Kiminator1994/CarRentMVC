@@ -19,6 +19,7 @@ namespace CarRent.Data
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.UseLazyLoadingProxies();
             optionsBuilder.UseSqlServer("Data Source = KONEKO\\KONEKO; Initial Catalog = CarRentDb; Trusted_Connection = True; Encrypt = false; Integrated Security = True; Pooling = False");
             base.OnConfiguring(optionsBuilder);
         }

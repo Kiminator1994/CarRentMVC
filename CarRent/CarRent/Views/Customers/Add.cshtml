@@ -10,11 +10,6 @@
             <form asp-action="Add">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="Nr" class="control-label"></label>
-                    <input asp-for="Nr" class="form-control" type="number" min="0" oninput="validity.valid||(value='');" id="nr" name="Nr" />
-                    <span asp-validation-for="Nr" class="text-danger"></span>
-                </div>
-                <div class="form-group">
                     <label asp-for="FirstName" class="control-label"></label>
                     <input asp-for="FirstName" class="form-control" type="text" id="firstname" name="FirstName" />
                     <span asp-validation-for="FirstName" class="text-danger"></span>
@@ -40,6 +35,14 @@
             </form>
         </div>
     </div>
+    @if(ViewBag.Message != null)
+    {
+       <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };    
+       </script>
+    }
     <div class="fixed-bottom text-end" style="margin: 0px 25px 75px 0px">
         <a class="btn btn-secondary" asp-action="Back">&#8592 Back</a>
     </div>

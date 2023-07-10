@@ -9,5 +9,6 @@ namespace CarRent.Data.Services
         void Add(Car car);
         Car Update(int id, Car car);
         void Delete(int id);
+        int MaxNr();
     }
 }

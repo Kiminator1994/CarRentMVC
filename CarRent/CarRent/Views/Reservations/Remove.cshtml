@@ -23,44 +23,44 @@
 <body>
     <div class="container">
         <h1>Car Reservation</h1>
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <form asp-action="Remove">
+            <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Customer.FirstName" class="control-label"></label>
-                <input asp-for="Customer.FirstName" type="text" class="form-control" id="firstName" name="firstName" />
+                <input asp-for="Customer.FirstName" type="text" class="form-control" id="firstName" name="firstName" readonly />
                 <span asp-validation-for="Customer.FirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Customer.LastName" class="control-label"></label>
-                <input asp-for="Customer.LastName" type="text" class="form-control" id="lastName" name="lastName" />
+                <input asp-for="Customer.LastName" type="text" class="form-control" id="lastName" name="lastName" readonly />
                 <span asp-validation-for="Customer.LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Customer.Address" class="control-label"></label>
-                <input asp-for="Customer.Address" type="text" class="form-control" id="address" name="address" />
+                <input asp-for="Customer.Address" type="text" class="form-control" id="address" name="address" readonly />
                 <span asp-validation-for="Customer.Address" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Customer.City" class="control-label"></label>
-                <input asp-for="Customer.City" type="text" class="form-control" id="city" name="city" />
+                <input asp-for="Customer.City" type="text" class="form-control" id="city" name="city" readonly />
                 <span asp-validation-for="Customer.City" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="StartDate" class="control-label"></label>
-                <input asp-for="StartDate" type="text" class="form-control" id="startDate" name="startDate" />
+                <input asp-for="StartDate" type="text" class="form-control" id="startDate" name="startDate" readonly />
             </div>
             <div class="form-group">
                 <label asp-for="EndDate" class="control-label"></label>
-                <input asp-for="EndDate" type="text" class="form-control" id="endDate" name="endDate" />
+                <input asp-for="EndDate" type="text" class="form-control" id="endDate" name="endDate" readonly />
             </div>
             <div class="form-group">
                 <label asp-for="TotalFee" class="control-label"></label>
                 <input asp-for="TotalFee" type="text" class="form-control" id="totalFee" name="totalFee" readonly />
             </div>
-            <button type="submit" asp-route-carId="@ViewData["carId"]" class="btn btn-primary" id="submit" style="margin-top:10px" disabled>Submit</button>
+            <button type="submit" asp-route-carId="@Model.Id" class="btn btn-danger" id="submit" style="margin-top:10px">Remove</button>
         </form>
         <div class="fixed-bottom text-end" style="margin: 0px 150px 75px 0px">
-            <a class="btn btn-secondary" asp-action="Back" asp-controller="Cars">&#8592 Back</a>
+            <a class="btn btn-secondary" asp-action="Index">&#8592 Back</a>
         </div>
     </div>
 
@@ -78,7 +78,7 @@
 
                 if (startDate && endDate && startDate <= endDate) {
                     var totalDays = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1;
-                    var totalFee = totalDays * @price; 
+                    var totalFee = totalDays * @price;
                     totalFeeInput.value = totalFee;
                     document.getElementById('submit').disabled = false;
                 } else {

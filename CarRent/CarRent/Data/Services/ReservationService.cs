@@ -1,5 +1,6 @@
 ﻿using CarRent.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Threading;
 
 namespace CarRent.Data.Services
 {
@@ -17,9 +18,11 @@ namespace CarRent.Data.Services
             _context.SaveChanges();
         }
 
-        public bool Delete(int id)
+        public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var reservation = _context.Reservations.Find(id);
+            _context.Reservations.Remove(reservation);
+            _context.SaveChanges();
         }
 
         public IEnumerable<Reservation> GetAll()
@@ -45,6 +48,13 @@ namespace CarRent.Data.Services
             _context.Update(newReservation);
             await _context.SaveChangesAsync();
             return newReservation;
+        }
+
+        public int MaxNr()
+        {
+            var number = (from res in _context.Reservations
+                          select res.Nr).Max();
+            return number;
         }
     }
 }

@@ -48,5 +48,11 @@ namespace CarRent.Data.Services
         {
             throw new NotImplementedException();
         }
+        public int MaxNr()
+        {
+            var number = (from car in _context.Cars
+                          select car.Nr).Max();
+            return number;
+        }
     }
 }

@@ -5,6 +5,7 @@ namespace CarRent.Models
     public class Reservation
     {
         public int Id { get; set; }
+        [Display(Name = "Reservation Nr")]
         public int Nr { get; set; }
 
         [Display(Name = "Startdate")]
@@ -17,6 +18,7 @@ namespace CarRent.Models
         public decimal TotalFee { get; set; }
         public int CarId { get; set; }
         public int CustomerId { get; set; }
+        
         public virtual Car Car { get; set; }
         public virtual Customer Customer { get; set; }
         public virtual RentalContract? RentalContract { get; set; }
