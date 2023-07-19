@@ -58,14 +58,17 @@ namespace CarRent.Controllers
             if (ModelState.IsValid)
             {
                 car.Nr = _service.MaxNr() + 1;
-                _service.Add(car);
+                _service.AddAsync(car);
                 return RedirectToAction("Index");
             }
 
             return View(car);
         }
-       
-        public IActionResult Remove(int id)
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [HttpPost, ActionName("Details")]
+        public IActionResult DetailsRemove(int id)
         {
             _service.Delete(id);
             return RedirectToAction("Index");

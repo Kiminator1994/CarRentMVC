@@ -6,8 +6,8 @@ namespace CarRent.Data.Services
     {
         Task<IEnumerable<Customer>> GetAll();
         Task<Customer> GetByIdAsync(int id);
-        void Add(Customer customer);
-        Task<Customer> Get(Customer customer);
+        Task AddAsync(Customer customer);
+        Task<Customer> GetAsync(Customer customer);
         Task<Customer> UpdateAsync(int id, Customer customer);
         void Delete(int id);
         int MaxNr();

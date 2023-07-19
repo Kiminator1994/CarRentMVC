@@ -3,6 +3,7 @@ using CarRent.Data.Services;
 using CarRent.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Razor.Compilation;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -86,21 +87,44 @@ namespace CarRent.Controllers
                     Address = customer.Address,
                     City = customer.City
                 };
-                var dbCustomer = await _customerService.Get(customer);
+                var dbCustomer = await _customerService.GetAsync(customer);
                 if (dbCustomer == null)
                 {
                     customer.Nr = _customerService.MaxNr() + 1;
-                    _customerService.Add(customer);
-                    dbCustomer = await _customerService.Get(customer);
+                    await _customerService.AddAsync(customer);
+                    dbCustomer = await _customerService.GetAsync(customer);
                 }                                                           
                 reservation.CarId = carId;
                 reservation.CustomerId = dbCustomer.Id;
                 reservation.Nr = _service.MaxNr() + 1;
-                _service.Add(reservation);
+                await _service.AddAsync(reservation);
 
                 return RedirectToAction("Index", "Cars");
             }
-            return View(customer);
+            else
+            {
+                var car = await _carsService.GetByIdAsync(carId);
+                var existingReservations = await _service.GetByCarIdAsync(carId);
+
+                var reservedDates = existingReservations.Select(r => new { From = r.StartDate, To = r.EndDate })
+                                                        .SelectMany(r => Enumerable.Range(0, 1 + r.To.Subtract(r.From).Days)
+                                                        .Select(offset => r.From.AddDays(offset).ToString("yyyy-MM-dd")))
+                                                        .ToList();
+                ViewData["ReservedDates"] = JsonSerializer.Serialize(reservedDates);
+                ViewData["CarId"] = carId;
+                ViewData["Category"] = (decimal)car.Category;
+                reservation.Customer = new Customer();
+                if(customer.Address != null)
+                reservation.Customer.Address = customer.Address;
+                if(customer.City != null)
+                reservation.Customer.City = customer.City;
+                if(customer.FirstName != null)
+                reservation.Customer.FirstName = customer.FirstName;
+                if(customer.LastName != null)
+                reservation.Customer.LastName = customer.LastName;
+                return View(reservation);
+            }
+                
         }
 
         public async Task<IActionResult> Edit(int id)
@@ -140,9 +164,9 @@ namespace CarRent.Controllers
         }
 
         [HttpPost, ActionName("Remove")]
-        public IActionResult RemoveConfirmed(int id)
+        public IActionResult RemoveConfirmed(int resId)
         {
-            _service.Delete(id);
+            _service.Delete(resId);
             return RedirectToAction("Index");
         }
     }

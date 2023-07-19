@@ -13,6 +13,7 @@
 <body>
     <div class="container">
         <h1>Car Details</h1>
+    <form asp-action="Details">
             <div class="form-group">
                 <label asp-for="Brand" class="control-label"></label>
                 <input asp-for="Brand" type="text" class="form-control" readonly/>               
@@ -30,13 +31,15 @@
             <div class="form-group">
                 <label asp-for="Nr" class="control-label"></label>
                 <input asp-for="Nr" type="text" class="form-control" readonly/>                
-            </div>          
+            </div>
+            <div class="fixed-bottom text-end" style="margin: 0px 25px 75px 0px">
+                <button class="btn btn-danger" type="submit" asp-route-id="@Model.Id">Remove Car</button>
+            </div>
+        </form>
+        <div class="fixed-bottom text-end" style="margin: 0px 150px 75px 0px">
+            <a class="btn btn-secondary" asp-action="Back">&#8592 Back</a>
+        </div>
     </div>
-    <div class="fixed-bottom text-end" style="margin: 0px 25px 75px 0px">
-        <a class="btn btn-danger" asp-action="Remove" asp-route-id="@Model.Id">Remove Car</a>
-    </div>
-    <div class="fixed-bottom text-end" style="margin: 0px 150px 75px 0px">
-        <a class="btn btn-secondary" asp-action="Back">&#8592 Back</a>
-    </div>
+
 </body>
 </html>

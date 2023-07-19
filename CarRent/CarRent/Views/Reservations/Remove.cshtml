@@ -57,7 +57,7 @@
                 <label asp-for="TotalFee" class="control-label"></label>
                 <input asp-for="TotalFee" type="text" class="form-control" id="totalFee" name="totalFee" readonly />
             </div>
-            <button type="submit" asp-route-carId="@Model.Id" class="btn btn-danger" id="submit" style="margin-top:10px">Remove</button>
+            <button type="submit" asp-route-resId="@Model.Id" class="btn btn-danger" id="submit" style="margin-top:10px">Remove</button>
         </form>
         <div class="fixed-bottom text-end" style="margin: 0px 150px 75px 0px">
             <a class="btn btn-secondary" asp-action="Index">&#8592 Back</a>
@@ -108,8 +108,5 @@
             });
         });
     </script>
-
-
-
 </body>
 </html>

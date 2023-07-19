@@ -2,9 +2,6 @@
 using CarRent.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Net;
-using System.Web.Razor;
 
 
 namespace CarRent.Controllers
@@ -49,7 +46,7 @@ namespace CarRent.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Add([Bind("FirstName,LastName,Address,City")] Customer customer)
+        public async Task<IActionResult> Add([Bind("FirstName,LastName,Address,City")] Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -61,11 +58,11 @@ namespace CarRent.Controllers
                     Address = customer.Address,
                     City = customer.City
                 };
-                var dbCustomer = _service.Get(customer);
-                if (dbCustomer.Result == null)
+                var dbCustomer =  await _service.GetAsync(customer);
+                if (dbCustomer == null)
                 {
                     customer.Nr = _service.MaxNr() + 1;
-                    _service.Add(customer);
+                    await _service.AddAsync(customer);
                     return RedirectToAction("Index");
                 }
                 else
@@ -73,27 +70,29 @@ namespace CarRent.Controllers
                     ViewBag.Message = "Customer already exists";
                 }
             }
-            return View(customer);           
+            return View(customer);
         }
 
         public async Task<IActionResult> Edit(int id)
         {
 
             var customerDetails = await _service.GetByIdAsync(id);
-            if (customerDetails == null) return View("empty");
+            if (customerDetails == null) 
+                return View("empty");
             return View(customerDetails);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Address,City")] Customer customer)
+        public async Task<IActionResult> Edit(int id, [Bind("Nr,Id,FirstName,LastName,Address,City")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-               await  _service.UpdateAsync(id, customer);
+                await _service.UpdateAsync(id, customer);
                 return RedirectToAction("Index");
             }
-            return View(customer);
+            else
+                return View(customer);
         }
 
         public IActionResult Back()

@@ -12,10 +12,10 @@ namespace CarRent.Data.Services
         {
             _context = context;
         }
-        public void Add(Reservation reservation)
+        public async Task AddAsync(Reservation reservation)
         {
-            _context.Reservations.Add(reservation);
-            _context.SaveChanges();
+            await _context.Reservations.AddAsync(reservation);
+            await _context.SaveChangesAsync();
         }
 
         public void Delete(int id)
@@ -27,9 +27,7 @@ namespace CarRent.Data.Services
 
         public IEnumerable<Reservation> GetAll()
         {
-            return _context.Reservations.ToList();
-
-            
+            return _context.Reservations.ToList();         
         }
 
 

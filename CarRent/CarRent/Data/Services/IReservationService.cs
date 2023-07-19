@@ -6,7 +6,7 @@ namespace CarRent.Data.Services
     {
         IEnumerable<Reservation> GetAll();
         Task<Reservation> GetByIdAsync(int id);
-        void Add(Reservation reservation);
+        Task AddAsync(Reservation reservation);
         Task<Reservation> UpdateAsync(int id, Reservation reservation);
         void Delete(int id);
         Task<List<Reservation>> GetByCarIdAsync(int carId);

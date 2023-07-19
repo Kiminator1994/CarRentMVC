@@ -24,7 +24,7 @@
     <div class="container">
         <h1>Car Reservation</h1>
         <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Customer.FirstName" class="control-label"></label>
                 <input asp-for="Customer.FirstName" type="text" class="form-control" id="firstName" name="firstName" />
@@ -57,7 +57,7 @@
                 <label asp-for="TotalFee" class="control-label"></label>
                 <input asp-for="TotalFee" type="text" class="form-control" id="totalFee" name="totalFee" readonly />
             </div>
-            <button type="submit" asp-route-carId="@ViewData["carId"]" class="btn btn-primary" id="submit" style="margin-top:10px" disabled>Submit</button>
+            <button type="submit" asp-route-carId="@ViewData["carId"]" class="btn btn-primary" id="submit" style="margin-top:10px">Submit</button>
         </form>
         <div class="fixed-bottom text-end" style="margin: 0px 150px 75px 0px">
             <a class="btn btn-secondary" asp-action="Back" asp-controller="Cars">&#8592 Back</a>
@@ -67,6 +67,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var reservedDates = @Html.Raw(ViewData["ReservedDates"]);
+            var price = @ViewBag.Category;
 
             function calculateTotalFee() {
                 var startDateInput = document.getElementById('startDate');
@@ -78,7 +79,7 @@
 
                 if (startDate && endDate && startDate <= endDate) {
                     var totalDays = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1;
-                    var totalFee = totalDays * @price; 
+                    var totalFee = totalDays * price;
                     totalFeeInput.value = totalFee;
                     document.getElementById('submit').disabled = false;
                 } else {
@@ -106,8 +107,41 @@
                     calculateTotalFee();
                 }
             });
+
+            // Restore selected dates after a form submission (if available)
+            var startDateInput = document.getElementById('startDate');
+            var endDateInput = document.getElementById('endDate');
+            var selectedStartDate = startDateInput.value.DateOnly;
+            var selectedEndDate = endDateInput.value.DateOnly;
+
+            if (selectedStartDate) {
+                flatpickr('#startDate', {
+                    enableTime: false,
+                    dateFormat: 'Y-m-d',
+                    minDate: 'today',
+                    disable: reservedDates,
+                    defaultDate: selectedStartDate,
+                    onChange: function () {
+                        calculateTotalFee();
+                    }
+                });
+            }
+
+            if (selectedEndDate) {
+                flatpickr('#endDate', {
+                    enableTime: false,
+                    dateFormat: 'Y-m-d',
+                    minDate: 'today',
+                    disable: reservedDates,
+                    defaultDate: selectedEndDate,
+                    onChange: function () {
+                        calculateTotalFee();
+                    }
+                });
+            }
         });
     </script>
+
 
 
 

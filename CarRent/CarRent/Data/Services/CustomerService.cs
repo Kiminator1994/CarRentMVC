@@ -11,13 +11,13 @@ namespace CarRent.Data.Services
         {
             _context = context;
         }
-        public  void Add(Customer customer)
+        public async Task AddAsync(Customer customer)
         {
-            _context.Customers.Add(customer);           
-            _context.SaveChangesAsync();           
+            await _context.Customers.AddAsync(customer);           
+            await _context.SaveChangesAsync();           
         }
 
-        public async Task<Customer> Get(Customer customer)
+        public async Task<Customer> GetAsync(Customer customer)
         {
             return await _context.Customers.Where(c => c.FirstName == customer.FirstName && c.LastName == customer.LastName && c.Address == customer.Address && c.City == customer.City).FirstOrDefaultAsync();
         }
