@@ -56,9 +56,16 @@ namespace CarRent.Data.Services
 
         public int MaxNr()
         {
-            var number = (from customer in _context.Customers
-                          select customer.Nr).Max();
-            return number;
+            try
+            {
+                var number = (from customer in _context.Customers
+                              select customer.Nr).Max();
+                return number;
+            }
+            catch(Exception ex)
+            {
+                return 0;
+            }
         }
     }
 }

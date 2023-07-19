@@ -5,6 +5,7 @@ namespace CarRent.Models
     public class Reservation
     {
         public int Id { get; set; }
+
         [Display(Name = "Reservation Nr")]
         public int Nr { get; set; }
 

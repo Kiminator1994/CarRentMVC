@@ -43,16 +43,23 @@ namespace CarRent.Data.Services
 
         public async Task<Reservation> UpdateAsync(int id, Reservation newReservation)
         {
-            _context.Update(newReservation);
+            _context.Reservations.Update(newReservation);
             await _context.SaveChangesAsync();
             return newReservation;
         }
 
         public int MaxNr()
         {
-            var number = (from res in _context.Reservations
-                          select res.Nr).Max();
-            return number;
+            try
+            {
+                var number = (from r in _context.Reservations
+                              select r.Nr).Max();
+                return number;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
         }
     }
 }

@@ -46,6 +46,14 @@ namespace CarRent.Controllers
             return View(carDetails);
         }
 
+        [HttpPost, ActionName("Details")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DetailsRemove(int id)
+        {
+            _service.Delete(id);
+            return RedirectToAction("Index");
+        }
+
         public IActionResult Add()
         {
             return View();
@@ -63,15 +71,6 @@ namespace CarRent.Controllers
             }
 
             return View(car);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [HttpPost, ActionName("Details")]
-        public IActionResult DetailsRemove(int id)
-        {
-            _service.Delete(id);
-            return RedirectToAction("Index");
         }
 
         public IActionResult Back()

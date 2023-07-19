@@ -10,6 +10,7 @@ builder.Services.AddDbContext<AppDbContext>();
 builder.Services.AddScoped<ICarsService, CarsService>();
 builder.Services.AddScoped<IReservationService, ReservationService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<IRentalContractsService, RentalContractsService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

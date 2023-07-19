@@ -164,6 +164,7 @@ namespace CarRent.Controllers
         }
 
         [HttpPost, ActionName("Remove")]
+        [ValidateAntiForgeryToken]
         public IActionResult RemoveConfirmed(int resId)
         {
             _service.Delete(resId);

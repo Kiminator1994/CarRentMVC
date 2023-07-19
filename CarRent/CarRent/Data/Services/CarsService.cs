@@ -28,8 +28,9 @@ namespace CarRent.Data.Services
 
         public void Delete(int id)
         {
-
-            
+            var car = _context.Cars.Find(id);
+            _context.Cars.Remove(car);
+            _context.SaveChanges();
         }
 
         public async Task<IEnumerable<Car>> GetAll()
@@ -50,9 +51,16 @@ namespace CarRent.Data.Services
         }
         public int MaxNr()
         {
-            var number = (from car in _context.Cars
-                          select car.Nr).Max();
-            return number;
+            try
+            {
+                var number = (from c in _context.Cars
+                              select c.Nr).Max();
+                return number;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
         }
     }
 }
