@@ -14,16 +14,8 @@ namespace CarRent.Data.Services
         }
         public async void AddAsync(Car car)
         {
-            try
-            {
-                await _context.Cars.AddAsync(car);
-                await _context.SaveChangesAsync();
-            }
-            catch(Exception ex)
-            {
-                
-            }
-            
+            await _context.Cars.AddAsync(car);
+            await _context.SaveChangesAsync();
         }
 
         public void Delete(int id)

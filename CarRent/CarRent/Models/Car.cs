@@ -19,7 +19,7 @@ namespace CarRent.Models
         [Required(ErrorMessage = "Picture URL is required")]
         public string? PictureUrl { get; set; }
 
-        [Display(Name = "Price")]
+        [Display(Name = "Price plan")]
         [Required(ErrorMessage = "Price is required")]
         public CarCategory Category { get; set; }
 
