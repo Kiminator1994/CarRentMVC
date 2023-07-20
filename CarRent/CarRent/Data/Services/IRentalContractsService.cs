@@ -11,5 +11,6 @@ namespace CarRent.Data.Services
         Task<RentalContract> UpdateAsync(int id, RentalContract rentalContract);
         void Delete(int id);
         int MaxNr();
+        Task<RentalContract> GetContractByReservationId(int resId);
     }
 }

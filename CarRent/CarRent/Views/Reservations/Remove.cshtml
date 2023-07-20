@@ -63,50 +63,5 @@
             <a class="btn btn-secondary" asp-action="Index">&#8592 Back</a>
         </div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var reservedDates = @Html.Raw(ViewData["ReservedDates"]);
-
-            function calculateTotalFee() {
-                var startDateInput = document.getElementById('startDate');
-                var endDateInput = document.getElementById('endDate');
-                var totalFeeInput = document.getElementById('totalFee');
-
-                var startDate = new Date(startDateInput.value);
-                var endDate = new Date(endDateInput.value);
-
-                if (startDate && endDate && startDate <= endDate) {
-                    var totalDays = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1;
-                    var totalFee = totalDays * @price;
-                    totalFeeInput.value = totalFee;
-                    document.getElementById('submit').disabled = false;
-                } else {
-                    totalFeeInput.value = 'Invalid Date';
-                    document.getElementById('submit').disabled = true;
-                }
-            }
-
-            flatpickr('#startDate', {
-                enableTime: false,
-                dateFormat: 'Y-m-d',
-                minDate: 'today',
-                disable: reservedDates,
-                onChange: function () {
-                    calculateTotalFee();
-                }
-            });
-
-            flatpickr('#endDate', {
-                enableTime: false,
-                dateFormat: 'Y-m-d',
-                minDate: 'today',
-                disable: reservedDates,
-                onChange: function () {
-                    calculateTotalFee();
-                }
-            });
-        });
-    </script>
 </body>
 </html>

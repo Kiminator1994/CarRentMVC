@@ -55,25 +55,47 @@ namespace CarRent.Controllers
             }
             return View("Index", rentalContracts);
         }
-        public async Task<IActionResult> Create(int carId)
-        {          
+        public async Task<IActionResult> Create(int resId)
+        {
+            var existingContract = await _service.GetContractByReservationId(resId);
+            if (existingContract != null)
+            {
+                TempData["AlertMessage"] = "Rental contract already exists for this reservation.";
+                return RedirectToAction("Index", "Reservations");
+            }
 
+            var reservation = await _reservationService.GetByIdAsync(resId);
+            if (reservation != null)
+            {
+                RentalContract ren = new RentalContract();
+                ren.Reservation = reservation;
+                return View(ren);
+            }
+            else
             return View();
         }
 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StartDate,EndDate,TotalFee")] Reservation reservation, Customer customer, int carId)
+        public async Task<IActionResult> Create(RentalContract rentalContract, int resId)
         {
-            return View();
+            if (ModelState.IsValid)
+            {               
+                rentalContract.ReservationId = resId;
+                rentalContract.Nr = _service.MaxNr() + 1;
+                await _service.AddAsync(rentalContract);
+                return RedirectToAction("Index");
+            }
+            else
+                return RedirectToAction("Index", "Reservations");
 
         }      
 
         public async Task<IActionResult> Remove(int id)
         {
-            var reservation = await _service.GetByIdAsync(id);
-            return View(reservation);
+            var rentalContract = await _service.GetByIdAsync(id);
+            return View(rentalContract);
         }
 
         [HttpPost, ActionName("Remove")]

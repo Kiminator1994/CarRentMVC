@@ -38,6 +38,12 @@ namespace CarRent.Data.Services
             return await _context.RentalContracts.FirstOrDefaultAsync(r => r.Id == id);
         }
 
+        public async Task<RentalContract> GetContractByReservationId(int resId)
+        {
+            return await _context.RentalContracts.FirstOrDefaultAsync(ren => ren.ReservationId == resId);
+        }
+
+
         public int MaxNr()
         {
             try

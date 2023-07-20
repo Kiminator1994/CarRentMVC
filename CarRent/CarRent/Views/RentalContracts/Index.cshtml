@@ -7,6 +7,7 @@
         <thead>
             <tr class="text-center">
                 <th>@Html.DisplayNameFor(model => model.Nr)</th>
+                <th>@Html.DisplayNameFor(model => model.Reservation.Customer.Nr)</th>
                 <th>@Html.DisplayNameFor(model => model.Reservation.Customer.FirstName)</th>
                 <th>@Html.DisplayNameFor(model => model.Reservation.Customer.LastName)</th>
                 <th>@Html.DisplayNameFor(model => model.Reservation.Car.Nr)</th>
@@ -24,6 +25,7 @@
                 <tr class="text-center">
 
                     <td class="align-middle">@Html.DisplayFor(Item => item.Nr)</td>
+                    <td class="align-middle">@Html.DisplayFor(Item => item.Reservation.Customer.Nr)</td>
                     <td class="align-middle">@Html.DisplayFor(Item => item.Reservation.Customer.FirstName)</td>
                     <td class="align-middle">@Html.DisplayFor(Item => item.Reservation.Customer.LastName)</td>
                     <td class="align-middle">@Html.DisplayFor(Item => item.Reservation.Car.Nr)</td>

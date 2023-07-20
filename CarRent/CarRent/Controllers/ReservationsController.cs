@@ -99,7 +99,7 @@ namespace CarRent.Controllers
                 reservation.Nr = _service.MaxNr() + 1;
                 await _service.AddAsync(reservation);
 
-                return RedirectToAction("Index", "Cars");
+                return RedirectToAction("Index");
             }
             else
             {
@@ -168,6 +168,11 @@ namespace CarRent.Controllers
         public IActionResult RemoveConfirmed(int resId)
         {
             _service.Delete(resId);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Back()
+        {
             return RedirectToAction("Index");
         }
     }
