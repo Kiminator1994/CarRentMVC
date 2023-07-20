@@ -2,7 +2,6 @@
 @model RentalContract
 @{
     ViewData["Title"] = "Rental Contract";
-
 }
 
 <!DOCTYPE html>
@@ -11,7 +10,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rental Contract</title>
-
 </head>
 <body>
     <div class="container">
@@ -21,37 +19,30 @@
             <div class="form-group">
                 <label asp-for="Reservation.Customer.FirstName" class="control-label"></label>
                 <input asp-for="Reservation.Customer.FirstName" type="text" class="form-control" id="firstName" name="firstName" readonly/>
-                <span asp-validation-for="Reservation.Customer.FirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Reservation.Customer.LastName" class="control-label"></label>
                 <input asp-for="Reservation.Customer.LastName" type="text" class="form-control" id="lastName" name="lastName" readonly />
-                <span asp-validation-for="Reservation.Customer.LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Reservation.Customer.Address" class="control-label"></label>
                 <input asp-for="Reservation.Customer.Address" type="text" class="form-control" id="address" name="address" readonly />
-                <span asp-validation-for="Reservation.Customer.Address" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Reservation.Customer.City" class="control-label"></label>
                 <input asp-for="Reservation.Customer.City" type="text" class="form-control" id="city" name="city" readonly />
-                <span asp-validation-for="Reservation.Customer.City" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Reservation.Car.Nr" class="control-label"></label>
                 <input asp-for="Reservation.Car.Nr" type="text" class="form-control" id="carNr" name="carNr" readonly />
-                <span asp-validation-for="Reservation.Car.Nr" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Reservation.Car.Brand" class="control-label"></label>
                 <input asp-for="Reservation.Car.Brand" type="text" class="form-control" id="brand" name="brand" readonly />
-                <span asp-validation-for="Reservation.Car.Brand" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Reservation.Car.ModelType" class="control-label"></label>
                 <input asp-for="Reservation.Car.ModelType" type="text" class="form-control" id="ModelType" name="ModelType" readonly />
-                <span asp-validation-for="Reservation.Car.ModelType" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Reservation.StartDate" class="control-label"></label>
@@ -67,7 +58,6 @@
             </div>
             <button type="submit" asp-route-resId="Reservation.Id" asp-route="RentalContract" class="btn btn-primary" id="submit" style="margin-top:10px">Submit</button>
         </form>
-
         <div class="fixed-bottom text-end" style="margin: 0px 150px 75px 0px">
             <a class="btn btn-secondary" asp-action="Back" asp-controller="Reservations">&#8592 Back</a>
         </div>

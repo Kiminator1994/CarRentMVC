@@ -22,27 +22,14 @@ namespace CarRent.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var data = await _service.GetAllAsync();
-            foreach (var rentalContract in data)
-            {
-                rentalContract.Reservation = await _reservationService.GetByIdAsync(rentalContract.ReservationId);
-                rentalContract.Reservation.Car = await _carsService.GetByIdAsync(rentalContract.Reservation.CarId);
-                rentalContract.Reservation.Customer = await _customerService.GetByIdAsync(rentalContract.Reservation.CustomerId);
-            }
+            var data = await _service.GetAllAsync();        
             return View(data);
         }
 
         [AllowAnonymous]
         public async Task<IActionResult> Filter(string searchString)
         {
-            var rentalContracts = await _service.GetAllAsync();
-            foreach (var rentalContract in rentalContracts)
-            {
-                rentalContract.Reservation = await _reservationService.GetByIdAsync(rentalContract.ReservationId);
-                rentalContract.Reservation.Car = await _carsService.GetByIdAsync(rentalContract.Reservation.CarId);
-                rentalContract.Reservation.Customer = await _customerService.GetByIdAsync(rentalContract.Reservation.CustomerId);
-            }
-
+            var rentalContracts = await _service.GetAllAsync();            
             if (!string.IsNullOrEmpty(searchString))
             {
                 var filteredResultNew = rentalContracts.Where(c => string.Equals(c.Reservation.Customer.FirstName, searchString, StringComparison.CurrentCultureIgnoreCase) ||
@@ -80,6 +67,8 @@ namespace CarRent.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(RentalContract rentalContract, int resId)
         {
+            ModelState.Remove("Car");
+            ModelState.Remove("Customer");
             if (ModelState.IsValid)
             {               
                 rentalContract.ReservationId = resId;

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CarRent.Models
 {
@@ -21,6 +22,7 @@ namespace CarRent.Models
 
         public decimal TotalFee { get; set; }
         public int ReservationId { get; set; }
+        [ForeignKey("ReservationId")]
         public virtual Reservation? Reservation { get; set; }
     }
 }
