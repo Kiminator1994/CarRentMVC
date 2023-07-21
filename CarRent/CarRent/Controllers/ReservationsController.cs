@@ -57,15 +57,7 @@ namespace CarRent.Controllers
         }
         public async Task<IActionResult> Create(int carId)
         {
-            var car = await _carsService.GetByIdAsync(carId);
-            var existingReservations = await _service.GetByCarIdAsync(carId);
-
-            var reservedDates = existingReservations.Select(r => new { From = r.StartDate, To = r.EndDate })
-                                                    .SelectMany(r => Enumerable.Range(0, 1 + r.To.Subtract(r.From).Days)
-                                                    .Select(offset => r.From.AddDays(offset).ToString("yyyy-MM-dd")))
-                                                    .ToList();
-            ViewData["ReservedDates"] = JsonSerializer.Serialize(reservedDates);
-            ViewData["CarId"] = carId;
+            await InitialiseFlatPickr(carId);
 
             return View();
         }
@@ -103,25 +95,17 @@ namespace CarRent.Controllers
             }
             else
             {
-                var car = await _carsService.GetByIdAsync(carId);
-                var existingReservations = await _service.GetByCarIdAsync(carId);
-
-                var reservedDates = existingReservations.Select(r => new { From = r.StartDate, To = r.EndDate })
-                                                        .SelectMany(r => Enumerable.Range(0, 1 + r.To.Subtract(r.From).Days)
-                                                        .Select(offset => r.From.AddDays(offset).ToString("yyyy-MM-dd")))
-                                                        .ToList();
-                ViewData["ReservedDates"] = JsonSerializer.Serialize(reservedDates);
-                ViewData["CarId"] = carId;
-                ViewData["Category"] = (decimal)car.Category;
+                await InitialiseFlatPickr(carId);
+                ViewData["Category"] = (decimal)reservation.Car.Category;
                 reservation.Customer = new Customer();
                 if(customer.Address != null)
-                reservation.Customer.Address = customer.Address;
+                    reservation.Customer.Address = customer.Address;
                 if(customer.City != null)
-                reservation.Customer.City = customer.City;
+                    reservation.Customer.City = customer.City;
                 if(customer.FirstName != null)
-                reservation.Customer.FirstName = customer.FirstName;
+                    reservation.Customer.FirstName = customer.FirstName;
                 if(customer.LastName != null)
-                reservation.Customer.LastName = customer.LastName;
+                    reservation.Customer.LastName = customer.LastName;
                 return View(reservation);
             }
                 
@@ -129,15 +113,8 @@ namespace CarRent.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
-            var reservation = await _service.GetByIdAsync(id);          
-            var existingReservations = await _service.GetByCarIdAsync(reservation.CarId);
-
-            var reservedDates = existingReservations.Select(r => new { From = r.StartDate, To = r.EndDate })
-                                                    .SelectMany(r => Enumerable.Range(0, 1 + r.To.Subtract(r.From).Days)
-                                                    .Select(offset => r.From.AddDays(offset).ToString("yyyy-MM-dd")))
-                                                    .ToList();
-            ViewData["ReservedDates"] = JsonSerializer.Serialize(reservedDates);
-            ViewData["CarId"] = reservation.CarId;
+            var reservation = await _service.GetByIdAsync(id);
+            await InitialiseFlatPickr(reservation.CarId);
 
             if (reservation == null) return View("empty");
             return View(reservation);
@@ -174,6 +151,18 @@ namespace CarRent.Controllers
         public IActionResult Back()
         {
             return RedirectToAction("Index");
+        }
+
+        public async Task InitialiseFlatPickr(int carId)
+        {
+            var existingReservations = await _service.GetByCarIdAsync(carId);
+
+            var reservedDates = existingReservations.Select(r => new { From = r.StartDate, To = r.EndDate })
+                                                    .SelectMany(r => Enumerable.Range(0, 1 + r.To.Subtract(r.From).Days)
+                                                    .Select(offset => r.From.AddDays(offset).ToString("yyyy-MM-dd")))
+                                                    .ToList();
+            ViewData["ReservedDates"] = JsonSerializer.Serialize(reservedDates);
+            ViewData["CarId"] = carId;
         }
     }
 }

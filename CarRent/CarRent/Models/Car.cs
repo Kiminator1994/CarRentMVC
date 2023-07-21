@@ -26,7 +26,7 @@ namespace CarRent.Models
         [Display(Name = "Brand")]
         [Required(ErrorMessage = "Brand is required")]
         public string? Brand { get; set; }
-        public virtual Reservation? Reservation { get; set; }
+        public virtual ICollection<Reservation>? Reservations { get; set; }
 
         [Display(Name = "Model Type")]
         [Required(ErrorMessage = "Modeltype is required")]

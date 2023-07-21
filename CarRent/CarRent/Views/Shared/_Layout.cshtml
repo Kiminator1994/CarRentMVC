@@ -89,7 +89,11 @@
             } else if (currentController === 'Home') {
                 searchForm.action = '/Cars/Filter';
                 searchForm.elements['searchString'].placeholder = 'Looking for a Car?';
+            } else if (currentController === 'RentalContracts') {
+                searchForm.action = '/RentalContracts/Filter';
+                searchForm.elements['searchString'].placeholder = 'Looking for a Contract?';
             }
+
         });
     </script>
 

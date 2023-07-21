@@ -26,11 +26,11 @@ namespace CarRent.Data.Services
         public async Task<IEnumerable<RentalContract>> GetAllAsync()
         {
             return await _context.RentalContracts
-        .Include(rc => rc.Reservation)
+            .Include(rc => rc.Reservation)
             .ThenInclude(r => r.Customer)
-        .Include(rc => rc.Reservation)
+            .Include(rc => rc.Reservation)
             .ThenInclude(r => r.Car)
-        .ToListAsync();
+            .ToListAsync();
         }
 
         public async Task<RentalContract> GetAsync(RentalContract rentalContract)

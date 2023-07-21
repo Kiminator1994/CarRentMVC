@@ -12,7 +12,7 @@ namespace CarRent.Data.Services
         {
             _context = context;
         }
-        public async void AddAsync(Car car)
+        public async Task AddAsync(Car car)
         {
             await _context.Cars.AddAsync(car);
             await _context.SaveChangesAsync();
