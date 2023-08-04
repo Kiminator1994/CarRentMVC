@@ -116,7 +116,7 @@ namespace CarRent.Controllers
             var reservation = await _service.GetByIdAsync(id);
             await InitialiseFlatPickr(reservation.CarId);
 
-            if (reservation == null) return View("empty");
+            if (reservation == null) return View();
             return View(reservation);
         }
 
