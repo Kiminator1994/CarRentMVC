@@ -3,6 +3,7 @@ using CarRent.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
+using Microsoft.IdentityModel.Tokens;
 
 namespace CarRent.Controllers
 {
@@ -10,15 +11,11 @@ namespace CarRent.Controllers
     {
         private readonly IRentalContractsService _service;
         private readonly IReservationService _reservationService;
-        private readonly ICustomerService _customerService;
-        private readonly ICarsService _carsService;
 
-        public RentalContractsController( IRentalContractsService service, IReservationService reservationService, ICustomerService customerService, ICarsService carsService)
+        public RentalContractsController( IRentalContractsService service, IReservationService reservationService)
         {
             _service = service;
             _reservationService = reservationService;
-            _customerService = customerService;
-            _carsService = carsService;
         }
         public async Task<IActionResult> Index()
         {
@@ -59,7 +56,7 @@ namespace CarRent.Controllers
                 return View(ren);
             }
             else
-            return View();
+                return View();
         }
 
 
