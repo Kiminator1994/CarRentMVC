@@ -1,3 +1,3 @@
-# Semesterprojekt_Datenbank
+# SW Architecture Mini Project
 
-https://docs.google.com/spreadsheets/d/15dEWX3vSliDxWW5UKo-40nAqzBA0VK-QQNifMmuCdgw/edit#gid=945286808
+https://lernen.zbw.ch/mod/assign/view.php?id=43573
