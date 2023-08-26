@@ -1,7 +1,7 @@
 ﻿using CarRent.EntityModelConfiguration;
 using CarRent.Models;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.Extensions.Configuration;
 namespace CarRent.Data
 {
     public class AppDbContext : DbContext
@@ -20,7 +20,8 @@ namespace CarRent.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseLazyLoadingProxies();
-            optionsBuilder.UseSqlServer("Data Source = Koneko\\KONEKO; Initial Catalog = CarRentDb; Trusted_Connection = True; Encrypt = false; Integrated Security = True; Pooling = False");
+            optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+        
             base.OnConfiguring(optionsBuilder);
         }
 
