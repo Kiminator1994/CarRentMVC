@@ -96,15 +96,15 @@ namespace CarRent.Controllers
             else
             {
                 await InitialiseFlatPickr(carId);
-                ViewData["Category"] = (decimal)reservation.Car.Category;
+
                 reservation.Customer = new Customer();
-                if(customer.Address != null)
+                if (customer.Address != null)
                     reservation.Customer.Address = customer.Address;
-                if(customer.City != null)
+                if (customer.City != null)
                     reservation.Customer.City = customer.City;
-                if(customer.FirstName != null)
+                if (customer.FirstName != null)
                     reservation.Customer.FirstName = customer.FirstName;
-                if(customer.LastName != null)
+                if (customer.LastName != null)
                     reservation.Customer.LastName = customer.LastName;
                 return View(reservation);
             }
